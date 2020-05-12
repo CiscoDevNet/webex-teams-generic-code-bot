@@ -11,9 +11,9 @@ import random
 
 
 # Configuration and parametes for WEBEX TEAMS
-access_token="bot access token here"
+access_token="bot token"
 teamsapi = WebexTeamsAPI(access_token=access_token)
-botid = "bot id here"
+botid = "bot id"
 
 bot_functions = Flask(__name__)
 
@@ -115,9 +115,9 @@ def claim_code(room_id, current_message,  step, person_id):
                                         team_id = code_claim_message[code_claim_message.index("teamId:") + 1]
                                         teamsapi.team_memberships.create(team_id, personId=person_id)
                                     return
-                print("not a valid code")
-                teamsapi.messages.create(room_id, markdown=flows["claim_code"]["message error 1"])
-                return
+        print("not a valid code")
+        teamsapi.messages.create(room_id, markdown=flows["claim_code"]["message error 1"])
+        return
 
                                     
 
